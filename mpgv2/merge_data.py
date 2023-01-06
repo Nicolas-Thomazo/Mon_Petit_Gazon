@@ -10,20 +10,7 @@ import numpy as np
 load_dotenv()
 MPG_PATH = os.getenv("MPG_PATH")
 DATA_PATH = Path(MPG_PATH, "DATA")
-# %%
 
-df = pd.read_csv(f"{DATA_PATH}/")
-# %%
-old_path = Path(DATA_PATH, "MPGStats_fr_export (3).xlsx")
-path_file = Path(DATA_PATH, "export.csv")
-# os.rename(old_path, path_file)
-# %%
-df = pd.read_excel(old_path, index_col=0, header=2)
-df
-# %%
-df_temp = df[df["Poste"] == "A"]
-px.bar(df_temp, "Enchère moy")
-# %%
 def get_excel_from_mpg() -> pd.DataFrame:
     """
     Merge all dataframes from mpg excel sheet and dataframe with all the data
@@ -39,7 +26,7 @@ def get_excel_from_mpg() -> pd.DataFrame:
 
 def save_clean_csv_file(df: pd.DataFrame):
     """
-    - Fortmat datetime
+    - Format datetime
     - Save data to csv file
     """
     list_dates = df["Date"].values
